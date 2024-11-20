@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'primereact/button';
-import '@/styles/font-end/main.css';
+import '@/src/styles/projects/NailsAndSpa/font-end/main.css';
 import { ScrollTop } from 'primereact/scrolltop';
 import { Image } from 'primereact/image';
 
@@ -24,18 +24,18 @@ export default function NailsAndSpa() {
     };
 
     const imageUrls = [
-        "/images/spa-g-12.png",
-        "/images/spa-g-11.png",
-        "/images/spa-g-10.png",
-        "/images/spa-g-9.png",
-        "/images/spa-g-8.png",
-        "/images/spa-g-7.png",
-        "/images/spa-g-1.png",
-        "/images/spa-g-2.png",
-        "/images/spa-g-3.png",
-        "/images/spa-g-4.png",
-        "/images/spa-g-5.png",
-        "/images/spa-g-6.png",
+        "/images/projects/nailsandspa/spa-g-12.png",
+        "/images/projects/nailsandspa/spa-g-11.png",
+        "/images/projects/nailsandspa/spa-g-10.png",
+        "/images/projects/nailsandspa/spa-g-9.png",
+        "/images/projects/nailsandspa/spa-g-8.png",
+        "/images/projects/nailsandspa/spa-g-7.png",
+        "/images/projects/nailsandspa/spa-g-1.png",
+        "/images/projects/nailsandspa/spa-g-2.png",
+        "/images/projects/nailsandspa/spa-g-3.png",
+        "/images/projects/nailsandspa/spa-g-4.png",
+        "/images/projects/nailsandspa/spa-g-5.png",
+        "/images/projects/nailsandspa/spa-g-6.png",
     ];
 
     const [startIndex, setStartIndex] = useState(0);
@@ -50,6 +50,44 @@ export default function NailsAndSpa() {
 
     const visibleImages = imageUrls.slice(startIndex, startIndex + 6);
 
+    /*
+    useEffect(() => {
+        // Load Google Maps API script dynamically
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKrNd-7QWAaDRDgdMvcLliSTjrwn_ZT8&callback=initMap`;
+        script.defer = true;
+        script.async = true;
+        document.body.appendChild(script);
+
+        // Initialize Google Maps when script is loaded
+        script.onload = () => {
+            initMap();
+        };
+
+        // Clean up function to remove script
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+    
+    const initMap = () => {
+        // Coordinates of your shop location
+        const shopLocation = { lat: 40.7128, lng: -74.0060 };
+
+        // Create a map centered at your shop's location
+        const map = new window.google.maps.Map(document.getElementById("map")!, {
+            zoom: 15,
+            center: shopLocation
+        });
+
+        // Add a marker at your shop's location
+        const marker = new window.google.maps.Marker({
+            position: shopLocation,
+            map: map,
+            title: "Your Shop"
+        });
+    };
+    */
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -92,7 +130,7 @@ export default function NailsAndSpa() {
         <div className="">
             {/* Banner */}
             <section className="image-container">
-                <img src="/images/spa-1.png" alt="Responsive" className="responsive-image" />
+                <img src="/images/projects/nailsandspa/spa-1.png" alt="Responsive" className="responsive-image" />
                 <Button className="centered-button" label="Book Appointment" />
             </section>
 
@@ -104,7 +142,7 @@ export default function NailsAndSpa() {
             </div>
             <section ref={aboutUsPhoto} className="intro-container">
                 <div className="intro-content">
-                    <img src="/images/spa-3.png" alt="Nail Salon" className="animated-photo" />
+                    <img src="/images/projects/nailsandspa/spa-3.png" alt="Nail Salon" className="animated-photo" />
                     <div className="intro-text">
                     <h1>Welcome to NAILS & SPA</h1>
                     <p>Where elegance meets excellence. We offer a luxurious experience with a wide range of services, including manicures, pedicures, and custom nail art. Our skilled technicians are dedicated to providing the highest quality care in a relaxing and welcoming atmosphere. Treat yourself to the ultimate in nail care and leave feeling pampered and beautiful.</p>
@@ -124,8 +162,8 @@ export default function NailsAndSpa() {
                 <div className="service-container">
                     <div className="service-card">
                         <div className="service-card-front">
-                            <a href="/services-and-prices">
-                                <img src="/images/spa-sv-1.png" alt="Manicure" className="service-image" />
+                            <a href="/projects/sweetienails/services-and-prices">
+                                <img src="/images/projects/nailsandspa/spa-sv-1.png" alt="Manicure" className="service-image" />
                                 <ul className="service-list">
                                     <li><strong>MANICURE</strong></li>
                                 </ul>
@@ -134,15 +172,15 @@ export default function NailsAndSpa() {
                         <div className="service-card-back">
                             <p>Our manicure services are designed to pamper and perfect your hands. Whether you’re preparing for a special event or just treating yourself, we offer a range of options to suit your needs.</p>
                             <p>Experience the best manicure services. Our manicures include nail shaping, cuticle care, hand massage, and your choice of polish.</p>
-                            <a href="/services-and-prices">See more...</a>
+                            <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
                     </div>
                 </div>
                 <div className="service-container">
                     <div className="service-card">
                         <div className="service-card-front">
-                            <a href="/services-and-prices">
-                                <img src="/images/spa-sv-2.png" alt="Pedicure" className="service-image" />
+                            <a href="/projects/sweetienails/services-and-prices">
+                                <img src="/images/projects/nailsandspa/spa-sv-2.png" alt="Pedicure" className="service-image" />
                                 <ul className="service-list">
                                     <li><strong>PEDICURE</strong></li>
                                 </ul>
@@ -151,15 +189,15 @@ export default function NailsAndSpa() {
                         <div className="service-card-back">
                             <p>Indulge in our pedicure treatments that soothe and rejuvenate. Perfect for relieving foot fatigue and enhancing your overall comfort.</p>
                             <p>Relax with our luxurious pedicure treatments, featuring a soothing foot soak, exfoliation, and a relaxing foot massage.</p>
-                            <a href="/services-and-prices">See more...</a>
+                            <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
                     </div>
                 </div>
                 <div className="service-container">
                     <div className="service-card">
                         <div className="service-card-front">
-                            <a href="/services-and-prices">
-                                <img src="/images/spa-sv-3.png" alt="Custom Nail Art" className="service-image" />
+                            <a href="/projects/sweetienails/services-and-prices">
+                                <img src="/images/projects/nailsandspa/spa-sv-3.png" alt="Custom Nail Art" className="service-image" />
                                 <ul className="service-list">
                                     <li><strong>CUSTOM NAIL ART</strong></li>
                                 </ul>
@@ -168,15 +206,15 @@ export default function NailsAndSpa() {
                         <div className="service-card-back">
                             <p>Elevate your style with our custom nail art. Perfect for making a statement and showcasing your unique personality.</p>
                             <p>Get unique and creative nail art designs, tailored to your personal style. Perfect for special occasions or just for fun.</p>
-                            <a href="/services-and-prices">See more...</a>
+                            <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
                     </div>
                 </div>
                 <div className="service-container">
                     <div className="service-card">
                         <div className="service-card-front">
-                            <a href="/services-and-prices">
-                                <img src="/images/spa-sv-4.png" alt="Waxing" className="service-image" />
+                            <a href="/projects/sweetienails/services-and-prices">
+                                <img src="/images/projects/nailsandspa/spa-sv-4.png" alt="Waxing" className="service-image" />
                                 <ul className="service-list">
                                     <li><strong>WAXING</strong></li>
                                 </ul>
@@ -185,15 +223,15 @@ export default function NailsAndSpa() {
                         <div className="service-card-back">
                             <p>Enjoy smooth and silky skin with our waxing services, designed to be gentle yet effective for long-lasting results.</p>
                             <p>Smooth and gentle waxing services, ensuring your skin feels silky smooth and hair-free for weeks.</p>
-                            <a href="/services-and-prices">See more...</a>
+                            <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
                     </div>
                 </div>
                 <div className="service-container">
                     <div className="service-card">
                         <div className="service-card-front">
-                            <a href="/services-and-prices">
-                                <img src="/images/spa-sv-5.png" alt="Massage" className="service-image" />
+                            <a href="/projects/sweetienails/services-and-prices">
+                                <img src="/images/projects/nailsandspa/spa-sv-5.png" alt="Massage" className="service-image" />
                                 <ul className="service-list">
                                     <li><strong>MASSAGE</strong></li>
                                 </ul>
@@ -202,15 +240,15 @@ export default function NailsAndSpa() {
                         <div className="service-card-back">
                             <p>Rejuvenate your body and mind with our massage therapies. Perfect for relieving stress and enhancing your relaxation.</p>
                             <p>Relax and unwind with our massage therapies, designed to relieve stress and improve your overall well-being.</p>
-                            <a href="/services-and-prices">See more...</a>
+                            <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
                     </div>
                 </div>
                 <div className="service-container">
                     <div className="service-card">
                         <div className="service-card-front">
-                            <a href="/services-and-prices">
-                                <img src="/images/spa-sv-6.png" alt="Eyelash" className="service-image" />
+                            <a href="/projects/sweetienails/services-and-prices">
+                                <img src="/images/projects/nailsandspa/spa-sv-6.png" alt="Eyelash" className="service-image" />
                                 <ul className="service-list">
                                     <li><strong>EYELASH</strong></li>
                                 </ul>
@@ -218,7 +256,7 @@ export default function NailsAndSpa() {
                         </div>
                         <div className="service-card-back">
                             <p>Enhance your natural beauty with our eyelash services, designed to give you longer, fuller lashes with a touch of glamour.</p>
-                            <a href="/services-and-prices">See more...</a>
+                            <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
                     </div>
                 </div>
@@ -239,6 +277,18 @@ export default function NailsAndSpa() {
                 </div>
                 <button className="arrow arrow-right" onClick={showNext}>›</button>
             </div>
+            {/* Map */}
+            {/*
+            <div className="location-container">
+                <div className="map-container">
+                    <div id="map" style={{ height: '50vh', width: '70vw', margin: 'auto' }}></div>
+                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(255, 255, 255, 0.8)', padding: '10px', borderRadius: '5px' }}>
+                        <h2>Shop Address</h2>
+                        <p>Your Shop's Address Goes Here</p>
+                    </div>
+                </div>
+            </div>
+            */}
             <div ref={locationRef} className="container">
                 <hr className="line-left" />
                 <h1>Our Location</h1>
