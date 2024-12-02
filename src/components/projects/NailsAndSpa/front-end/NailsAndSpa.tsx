@@ -131,7 +131,7 @@ export default function NailsAndSpa() {
             {/* Banner */}
             <section className="image-container">
                 <img src="/images/projects/nailsandspa/spa-1.png" alt="Responsive" className="responsive-image" />
-                <Button className="centered-button" label="Book Appointment" />
+                <a href='/projects/sweetienails/booking'><Button className="centered-button" label="Book Appointment" /></a>
             </section>
 
             {/* About Us */}

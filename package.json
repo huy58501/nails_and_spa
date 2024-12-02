@@ -50,6 +50,7 @@
     "react-animated-progress-bar": "^1.1.2",
     "react-awesome-reveal": "^4.2.7",
     "react-bootstrap": "^2.9.1",
+    "react-calendar": "^5.1.0",
     "react-chrono": "^2.3.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
@@ -91,6 +92,6 @@
     "dist/*"
   ],
   "engines": {
-      "node": "20.x"
-    }
+    "node": "20.x"
+  }
 }
