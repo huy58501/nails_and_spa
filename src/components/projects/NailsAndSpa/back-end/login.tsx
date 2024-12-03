@@ -90,6 +90,7 @@ export default function Login() {
           alignItems: "center",
           justifyContent: "center",
           marginTop: "100px",
+          border: "none",
         }}
       >
         <div className="flex flex-column md:flex-row">

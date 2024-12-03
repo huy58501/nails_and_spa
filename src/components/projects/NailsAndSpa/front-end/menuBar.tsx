@@ -1,39 +1,20 @@
 
-import React, { useState } from 'react'; 
+import React, { useRef, useState } from 'react'; 
 import { Menubar } from 'primereact/menubar';
 import { MenuItem } from 'primereact/menuitem';
 import { Button } from 'primereact/button';
 import '@/src/styles/projects/NailsAndSpa/font-end/main.css';
 import Link from 'next/link';
-import { SocialIcon } from 'react-social-icons';
 import { useRouter } from 'next/navigation';
 
 export default function nailsandspa() {
-
+  const locationRef = useRef<HTMLDivElement>(null);
   const [username, setUsername] = useState<string | null>(null);
     const items: MenuItem[] = [
         {
             label: 'Home',
             icon: 'pi pi-home',
             url: '/projects/sweetienails'
-        },
-        {
-            label: 'Employeers',
-            icon: 'pi pi-star',
-            items: [
-                {
-                    label: 'Employeer - 1',
-                    icon: 'pi pi-bolt'
-                },
-                {
-                    label: 'Employeer - 2',
-                    icon: 'pi pi-server'
-                },
-                {
-                    label: 'Employeer - 3',
-                    icon: 'pi pi-pencil'
-                },
-            ]
         },
         {
             label: 'Services',
@@ -67,6 +48,15 @@ export default function nailsandspa() {
             ]
         },
         {
+            label: 'Contact',
+            icon: 'pi pi-phone',
+            command: () => {
+              if (locationRef.current) {
+                locationRef.current.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+        },
+        {
             label: 'Dash Board',
             icon: 'pi pi-envelope',
             url: '/projects/sweetienails/login'
@@ -92,8 +82,6 @@ export default function nailsandspa() {
                 <ul>
                     <li><Link href="/projects/sweetienails">Home</Link></li>
                     <li><Link href="/projects/sweetienails/services-and-prices">Services</Link></li>
-                    <li><Link href="#employer">Employer</Link></li>
-                    <li><Link href="#contact">Contact</Link></li>
                 </ul>
             </nav>
             <div className="brand">
@@ -101,19 +89,8 @@ export default function nailsandspa() {
             </div>
             <nav className='menuBar'>
                 <ul>
-                    <li><SocialIcon
-                    style={{width: '35px', height: '35px'}}
-                    url="https://www.instagram.com/tonynguyen9032/"
-                    network="instagram"
-                  />{' '}</li>
-                    <li><SocialIcon
-                    style={{width: '35px', height: '35px'}}
-                    url="https://github.com/huy58501"
-                    network="github"
-                    bgColor="#121415"
-                  />{' '}</li>
-                    <li><SocialIcon style={{width: '35px', height: '35px'}} url="https://www.linkedin.com/in/tony-nguyen-996710235/" />{' '}</li>
-                    <li><DashboardButton /></li>
+                    <li><Link href="#Contact">Contact</Link></li>
+                    <li><Link href="/projects/sweetienails/login">DashBoard</Link></li>
                 </ul>
             </nav>
         </div>

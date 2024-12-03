@@ -39,55 +39,23 @@ export default function NailsAndSpa() {
     ];
 
     const [startIndex, setStartIndex] = useState(0);
-
-    const showPrev = () => {
-        setStartIndex((prevIndex: number) => (prevIndex - 6 + imageUrls.length) % imageUrls.length);
-    };
+    const [animationClass, setAnimationClass] = useState("");
 
     const showNext = () => {
-        setStartIndex((prevIndex: number) => (prevIndex + 6) % imageUrls.length);
+        setAnimationClass('slide-left');
+        setTimeout(() => {
+            setStartIndex((prevIndex) => (prevIndex + 6) % imageUrls.length);
+            setAnimationClass(''); // Reset animation class
+        }, 500); // Wait for the sliding animation duration before changing images
     };
 
     const visibleImages = imageUrls.slice(startIndex, startIndex + 6);
 
-    /*
     useEffect(() => {
-        // Load Google Maps API script dynamically
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKrNd-7QWAaDRDgdMvcLliSTjrwn_ZT8&callback=initMap`;
-        script.defer = true;
-        script.async = true;
-        document.body.appendChild(script);
+        const interval = setInterval(showNext, 3000); // Change images every 3 seconds
+        return () => clearInterval(interval); // Cleanup interval on unmount
+    }, [startIndex]);
 
-        // Initialize Google Maps when script is loaded
-        script.onload = () => {
-            initMap();
-        };
-
-        // Clean up function to remove script
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
-    
-    const initMap = () => {
-        // Coordinates of your shop location
-        const shopLocation = { lat: 40.7128, lng: -74.0060 };
-
-        // Create a map centered at your shop's location
-        const map = new window.google.maps.Map(document.getElementById("map")!, {
-            zoom: 15,
-            center: shopLocation
-        });
-
-        // Add a marker at your shop's location
-        const marker = new window.google.maps.Marker({
-            position: shopLocation,
-            map: map,
-            title: "Your Shop"
-        });
-    };
-    */
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -170,7 +138,7 @@ export default function NailsAndSpa() {
                             </a>
                         </div>
                         <div className="service-card-back">
-                            <p>Our manicure services are designed to pamper and perfect your hands. Whether you’re preparing for a special event or just treating yourself, we offer a range of options to suit your needs.</p>
+                            <p>Our manicure services are designed to pamper and perfect your hands.</p>
                             <p>Experience the best manicure services. Our manicures include nail shaping, cuticle care, hand massage, and your choice of polish.</p>
                             <a href="/projects/sweetienails/services-and-prices">See more...</a>
                         </div>
@@ -263,38 +231,24 @@ export default function NailsAndSpa() {
             </section>
 
             {/* Gallery */}
-            <div ref={galleryRef} className="container">
+            <div className="container">
                 <hr className="line-left" />
                 <h1>Our Gallery</h1>
                 <hr className="line-right" />
             </div>
-            <div className="card carousel-container">
-                <button className="arrow arrow-left" onClick={showPrev}>‹</button>
+            <div className={`card carousel-container ${animationClass}`}>
                 <div className="image-grid">
                     {visibleImages.map((url, index) => (
                         <Image key={index} src={url} alt={`Image ${startIndex + index + 1}`} preview />
                     ))}
                 </div>
-                <button className="arrow arrow-right" onClick={showNext}>›</button>
             </div>
-            {/* Map */}
-            {/*
-            <div className="location-container">
-                <div className="map-container">
-                    <div id="map" style={{ height: '50vh', width: '70vw', margin: 'auto' }}></div>
-                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(255, 255, 255, 0.8)', padding: '10px', borderRadius: '5px' }}>
-                        <h2>Shop Address</h2>
-                        <p>Your Shop's Address Goes Here</p>
-                    </div>
-                </div>
-            </div>
-            */}
             <div ref={locationRef} className="container">
                 <hr className="line-left" />
                 <h1>Our Location</h1>
                 <hr className="line-right" />
             </div>
-            <div className="location-container">
+            <div id="Contact" className="location-container">
                 <div className="address">
                     <h2>NAILS & SPA</h2>
                     <p>100 city center drive, Mississauga, ON, CANADA</p>

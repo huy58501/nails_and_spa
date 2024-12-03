@@ -5,7 +5,8 @@ import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { InputMask } from "primereact/inputmask";
 import { Button } from "primereact/button";
-import '@/src/styles/projects/NailsAndSpa/font-end/booking.css';
+import { Dialog } from "primereact/dialog";
+import "@/src/styles/projects/NailsAndSpa/font-end/booking.css";
 
 const employees = [
   { label: "Employee 1", value: "employee1" },
@@ -44,11 +45,14 @@ const BookingPage = () => {
   const [formData, setFormData] = useState({
     customerName: "",
     phone: "",
-    email: "", // Add email field to the form data
+    email: "",
     employee: null,
     service: null,
     time: "",
   });
+
+  // State for dialog visibility
+  const [showDialog, setShowDialog] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -62,6 +66,32 @@ const BookingPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Booking Details: ", { selectedDate: date, ...formData });
+
+    // Show the confirmation dialog after form submission
+    setShowDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setShowDialog(false);
+  };
+
+  const handleBookAnother = () => {
+    // Reset the form data for another booking
+    setFormData({
+      customerName: "",
+      phone: "",
+      email: "",
+      employee: null,
+      service: null,
+      time: "",
+    });
+    setDate(null); // Clear the selected date as well
+    setShowDialog(false); // Close the dialog
+  };
+
+  const handleReturnHome = () => {
+    setShowDialog(false); // Close the dialog and return home
+    // Implement your navigation logic here (e.g., redirect to the homepage)
   };
 
   return (
@@ -104,7 +134,6 @@ const BookingPage = () => {
           />
         </div>
 
-        {/* New Email field */}
         <div>
           <label>Email</label>
           <InputText
@@ -149,9 +178,24 @@ const BookingPage = () => {
           />
         </div>
 
-        {/* Submit Button */}
-        <Button label="Submit" icon="pi pi-check" type="submit" />
+        <Button label="Submit" type="submit" />
       </form>
+
+      {/* Dialog for Booking Confirmation */}
+      <Dialog
+        visible={showDialog}
+        onHide={handleCloseDialog}
+        header="Booking Successful"
+        footer={
+          <div>
+            <Button label="Keep Booking" onClick={handleBookAnother} />
+            <a href='/projects/sweetienails'><Button label="Return Home" onClick={handleReturnHome} /></a>
+          </div>
+        }
+      >
+        <p>Your appointment has been booked successfully!</p>
+        <p>Would you like to book another appointment or return to the home page?</p>
+      </Dialog>
     </div>
   );
 };
